@@ -1,7 +1,7 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import type * as swc from "@swc/wasm-web";
 import { webcrypto } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 
 import { test } from "vitest";
 

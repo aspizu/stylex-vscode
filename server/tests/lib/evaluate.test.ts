@@ -1,8 +1,8 @@
-import { describe, expect } from "vitest";
-import { testParser } from "../helpers/parseSetup";
 import type { ExpressionStatement, Program } from "@swc/types";
+import { describe, expect } from "vitest";
 import { evaluate } from "../../src/lib/evaluate";
 import StateManager from "../../src/lib/state-manager";
+import { testParser } from "../helpers/parseSetup";
 
 function evaluateModule(
   program: Program,

@@ -1,12 +1,12 @@
 import type { Module } from "@swc/types";
-import type { ColorInformation } from "vscode-languageserver";
-import type { StringAsBytes } from "./string-bytes";
-import { CSSVirtualDocument } from "./virtual-document";
 import {
   getCSSLanguageService,
   type LanguageService as CSSLanguageService,
 } from "vscode-css-languageservice";
+import type { ColorInformation } from "vscode-languageserver";
 import LRUCache from "./lru-cache";
+import type { StringAsBytes } from "./string-bytes";
+import { CSSVirtualDocument } from "./virtual-document";
 
 interface IServerState {
   setupCSSLanguageService(): void;
@@ -76,7 +76,6 @@ export default class ServerState implements IServerState {
                 "line-width",
                 "geometry-box",
                 "position",
-                "positon",
                 "shape",
               ],
             },

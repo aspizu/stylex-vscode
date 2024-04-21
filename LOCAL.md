@@ -1,6 +1,6 @@
 # Running locally
 
-## Prerequesites
+## Prerequisites
 
 - Node.js 18
 - Visual Studio Code

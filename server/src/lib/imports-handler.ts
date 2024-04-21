@@ -1,6 +1,6 @@
 import type { ImportDeclaration, VariableDeclarator } from "@swc/types";
-import StateManager from "./state-manager";
 import type { UserConfiguration } from "./settings";
+import StateManager from "./state-manager";
 
 export function handleImports(
   node: ImportDeclaration,

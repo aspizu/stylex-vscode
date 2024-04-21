@@ -1,10 +1,10 @@
 import { describe, expect } from "vitest";
-import { testParser } from "../helpers/parseSetup";
-import StateManager from "../../src/lib/state-manager";
-import { walk } from "../../src/lib/walk";
 import { type CancellationToken } from "vscode-languageserver";
 import { handleImports, handleRequires } from "../../src/lib/imports-handler";
 import { defaultSettings } from "../../src/lib/settings";
+import StateManager from "../../src/lib/state-manager";
+import { walk } from "../../src/lib/walk";
+import { testParser } from "../helpers/parseSetup";
 
 const testImportHandler = testParser.extend<{
   stateManager: StateManager;

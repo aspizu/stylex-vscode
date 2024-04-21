@@ -1,10 +1,10 @@
 import {
-  createConnection,
-  TextDocuments,
-  ProposedFeatures,
-  InitializeParams,
   DidChangeConfigurationNotification,
+  InitializeParams,
+  ProposedFeatures,
   TextDocumentSyncKind,
+  TextDocuments,
+  createConnection,
   type InitializeResult,
 } from "vscode-languageserver/node";
 
@@ -17,13 +17,13 @@ const wasmBuffer = readFileSync(
 
 import { TextDocument } from "vscode-languageserver-textdocument";
 
-import { defaultSettings, type UserConfiguration } from "./lib/settings";
-import { getByteRepresentation } from "./lib/string-bytes";
-import ServerState from "./lib/server-state";
+import onColorPresentation from "./capabilities/color-presentation";
 import onCompletion from "./capabilities/completions";
 import onDocumentColor from "./capabilities/document-colors";
-import onColorPresentation from "./capabilities/color-presentation";
 import onHover from "./capabilities/hover";
+import ServerState from "./lib/server-state";
+import { defaultSettings, type UserConfiguration } from "./lib/settings";
+import { getByteRepresentation } from "./lib/string-bytes";
 
 // Create a connection for the server, using Node's IPC as a transport.
 // Also include all preview / proposed LSP features.

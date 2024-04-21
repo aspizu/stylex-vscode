@@ -1,6 +1,6 @@
-import { Connection } from "../server";
+import { formatHex8, formatHsl, formatRgb, type Color } from "culori";
 import type ServerState from "../lib/server-state";
-import { type Color, formatHex8, formatRgb, formatHsl } from "culori";
+import { Connection } from "../server";
 
 type ColorPresentationParams = Parameters<
   Parameters<Connection["onColorPresentation"]>[0]

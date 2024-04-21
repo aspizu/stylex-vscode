@@ -1,5 +1,5 @@
 // The idea of have a virtual document is to create a fake document to pass into the CSS Language Service to get the correct CSS completions.
-// This is what the now deprecated `typescript-styled-plugin` did internall to get the correct (S)CSS completions.
+// This is what the now deprecated `typescript-styled-plugin` did internal to get the correct (S)CSS completions.
 
 import type { TextDocument } from "vscode-languageserver-textdocument";
 

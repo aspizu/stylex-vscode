@@ -39,16 +39,16 @@ function processArrayExpression(
   node: ArrayExpression,
   stateManager: StateManager,
 ) {
-  const result = node.elements.reduce<any[]>((accumalator, exprOrSpread) => {
-    if (!exprOrSpread || !accumalator) return accumalator;
+  const result = node.elements.reduce<any[]>((accumulator, exprOrSpread) => {
+    if (!exprOrSpread || !accumulator) return accumulator;
     if (exprOrSpread.spread) {
       const result = evaluate(exprOrSpread.expression, stateManager);
 
       if (!result.static) {
-        accumalator.push(result);
+        accumulator.push(result);
       }
 
-      accumalator.push(
+      accumulator.push(
         ...(<any[]>(
           (result &&
           typeof result === "object" &&
@@ -60,9 +60,9 @@ function processArrayExpression(
         )),
       );
     } else {
-      accumalator.push(evaluate(exprOrSpread.expression, stateManager));
+      accumulator.push(evaluate(exprOrSpread.expression, stateManager));
     }
-    return accumalator;
+    return accumulator;
   }, []);
 
   return { value: result, static: true, span: node.span } satisfies ResultType;
@@ -96,8 +96,6 @@ export function evaluate(
         return { value: undefined, static: true, span: node.span };
       else {
         return { id: node.value, static: true, span: node.span };
-        // We won't support identifiers here because identifiers usually imply a dynamic value and we don't want to support that
-        throw new Error("Identifier not implemented");
       }
     case "ArrayExpression": {
       return processArrayExpression(node, stateManager);
@@ -105,14 +103,14 @@ export function evaluate(
 
     case "ObjectExpression": {
       const result = node.properties.reduce<Record<string, ResultType>>(
-        (accumalator, property) => {
+        (accumulator, property) => {
           if (property.type === "SpreadElement") {
             const result = evaluate(property.arguments, stateManager);
             if (result && typeof result === "object" && "value" in result) {
-              if (!result.static) return accumalator;
-              accumalator = Object.assign(accumalator, result.value);
+              if (!result.static) return accumulator;
+              accumulator = Object.assign(accumulator, result.value);
             }
-            return accumalator;
+            return accumulator;
           }
 
           switch (property.type) {
@@ -125,7 +123,7 @@ export function evaluate(
                   typeof keyVal.value === "number" ||
                   typeof keyVal.value === "symbol")
               ) {
-                accumalator[keyVal.value] = evaluate(
+                accumulator[keyVal.value] = evaluate(
                   property.value,
                   stateManager,
                 );
@@ -136,18 +134,18 @@ export function evaluate(
             case "GetterProperty":
             case "SetterProperty":
             case "MethodProperty": {
-              return accumalator;
+              return accumulator;
             }
 
             case "Identifier": {
               const result = evaluate(property, stateManager);
-              if (!result.static) return accumalator;
-              accumalator[property.value] = result;
+              if (!result.static) return accumulator;
+              accumulator[property.value] = result;
               break;
             }
           }
 
-          return accumalator;
+          return accumulator;
         },
         {},
       );
@@ -497,8 +495,5 @@ export function evaluate(
 
     default:
       return { value: undefined, static: false };
-      throw new Error("Unknown expression");
   }
-
-  return { value: undefined, static: false };
 }

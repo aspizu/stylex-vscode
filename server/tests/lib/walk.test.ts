@@ -1,7 +1,7 @@
-import { expect, describe } from "vitest";
+import { describe, expect } from "vitest";
+import { type CancellationToken } from "vscode-languageserver";
 import { States, walk } from "../../src/lib/walk";
 import { testParser } from "../helpers/parseSetup";
-import { type CancellationToken } from "vscode-languageserver";
 
 describe("walk", () => {
   testParser("walks a simple expression", async ({ parser }) => {

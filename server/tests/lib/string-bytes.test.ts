@@ -1,5 +1,5 @@
+import { describe, expect, test } from "vitest";
 import { StringAsBytes } from "../../src/lib/string-bytes";
-import { expect, describe, test } from "vitest";
 
 describe("StringAsBytes", () => {
   test("byteOffsetToCharIndex no unicode", () => {

@@ -1,7 +1,7 @@
-import { test, expect, describe } from "vitest";
+import { describe, expect, test } from "vitest";
 
-import { calculateStartOffset, parse } from "../../src/lib/parser";
 import { TextDocument } from "vscode-languageserver-textdocument";
+import { calculateStartOffset, parse } from "../../src/lib/parser";
 import { testParser } from "../helpers/parseSetup";
 
 const textEncoder = new TextEncoder();

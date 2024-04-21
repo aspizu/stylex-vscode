@@ -1,15 +1,15 @@
-import * as path from "node:path";
+import * as braces from "braces";
 import { minimatch } from "minimatch";
+import * as path from "node:path";
+import normalizePath from "normalize-path";
 import {
+  RelativePattern,
   workspace,
   type ExtensionContext,
-  type WorkspaceFolder,
-  type Uri,
-  RelativePattern,
   type TextDocument,
+  type Uri,
+  type WorkspaceFolder,
 } from "vscode";
-import normalizePath from "normalize-path";
-import * as braces from "braces";
 
 import {
   LanguageClient,

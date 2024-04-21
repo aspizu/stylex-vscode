@@ -1,6 +1,5 @@
-import { describe, test, expect } from "vitest";
+import { describe, expect, test } from "vitest";
 import { CSSVirtualDocument } from "../../src/lib/virtual-document";
-import { TextDocument } from "vscode-languageserver-textdocument";
 
 const testFactory = test.extend<{ vdFactory: CSSVirtualDocument }>({
   vdFactory: async ({}, use) => {

@@ -1,7 +1,7 @@
 // Color logic from Tailwind CSS IntelliSense
 
-import * as culori from "culori";
 import * as namedColors from "color-name";
+import * as culori from "culori";
 import type { Color } from "vscode-languageserver";
 
 export type KeywordColor = "transparent" | "currentColor";
